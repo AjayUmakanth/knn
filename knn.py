@@ -4,7 +4,7 @@ import operator
 class knn:
     def __init__(self,name):
         self.name=name
-        
+        self.trained=False
     def train(self,dataSet,label):
         dataSet=np.array(dataSet)
         if not(dataSet.shape[0]==label.shape[0]):
@@ -17,7 +17,7 @@ class knn:
         minimum=np.array(minimum)
         maximum=np.array(maximum)
         dataSet=(dataSet-minimum)/(maximum-minimum)
-        train=True        
+        self.trained=True        
         f=open(self.name,'wb')
         pickle.dump(dataSet,f)
         pickle.dump(minimum,f)
